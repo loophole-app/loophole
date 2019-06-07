@@ -18,7 +18,7 @@ body {
 img.logo {
 	width: 40%;
 }
-input {
+input, button {
 	border-radius: 4px;
 	border: 1px solid DodgerBlue;
 	background-color: #f1f1f1;
