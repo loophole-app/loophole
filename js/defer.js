@@ -1,6 +1,6 @@
 autocomplete(document.getElementById("schoolInput"), names);
 if('serviceWorker' in navigator) {
-	navigator.serviceWorker.register('js/sw.js');
+	navigator.serviceWorker.register('sw.js');
 }
 document.getElementById("submit").addEventListener("click", async function() {
 	load_start();
