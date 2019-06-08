@@ -1,11 +1,9 @@
-h1, h2, h3, h4, h5, h6 {
-	font-family: 'Helvetica Neue', serif;
-}
 body {
 	max-width: 500px;
 	text-align: center;
 }
 * {
+	font-family: 'Muli', sans-serif;
 	box-sizing: border-box;
 }
 .autocomplete {
