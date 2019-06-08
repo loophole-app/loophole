@@ -1,6 +1,16 @@
 let schools_url = "https://lol.schoolloop.com/mapi/schools"
 let schools = null;
 let names = new Array();
+let year = new Date().getFullYear();
+let devOS = "arm64";
+let version = 3;
+let devToken = guid();
+function guid() {
+	function s4() {
+		return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1).toUpperCase();
+	}
+	return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+}
 async function getSchools() {
 	let request = await fetch(schools_url);
 	let json = new TextDecoder().decode(await request.arrayBuffer());
@@ -79,4 +89,15 @@ function autocomplete(input, arr) {
 	document.addEventListener("click", function(e) {
 		closeAllLists(e.target);
 	});
+}
+function schoolURLFromName(schoolName) {
+	for(i = 0; i < schools.length; i++) {
+		if(schools[i].name.toUpperCase() == schoolName.toUpperCase()) {
+			return schools[i].domainName;
+		}
+	}
+	return false;
+}
+function loginURL(schoolURL) {
+	return "https://loophole-cors.herokuapp.com/" + `https://${schoolURL}/mapi/login?version=${version}&devToken=${devToken}&devOS=${devOS}&year=${year}`
 }
