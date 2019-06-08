@@ -1,4 +1,7 @@
 autocomplete(document.getElementById("schoolInput"), names);
+if('serviceWorker' in navigator) {
+	navigator.serviceWorker.register('js/sw.js');
+}
 document.getElementById("submit").addEventListener("click", async function() {
 	load_start();
 	schoolName = document.getElementById("schoolInput").value;
