@@ -101,3 +101,13 @@ function schoolURLFromName(schoolName) {
 function loginURL(schoolURL) {
 	return "https://loophole-cors.herokuapp.com/" + `https://${schoolURL}/mapi/login?version=${version}&devToken=${devToken}&devOS=${devOS}&year=${year}`
 }
+async function load_start() {
+	var element = document.createElement("img");
+	element.setAttribute("src", "img/loader.png");
+	element.setAttribute("width", "150px");
+	element.setAttribute("id", "loader");
+	document.body.appendChild(element);
+}
+async function load_stop() {
+	document.body.removeChild(document.getElementById("loader"));
+}

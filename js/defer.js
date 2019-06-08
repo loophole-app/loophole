@@ -1,5 +1,6 @@
 autocomplete(document.getElementById("schoolInput"), names);
 document.getElementById("submit").addEventListener("click", async function() {
+	load_start();
 	schoolName = document.getElementById("schoolInput").value;
 	username = document.getElementById("username").value;
 	password = document.getElementById("password").value;
@@ -17,6 +18,7 @@ document.getElementById("submit").addEventListener("click", async function() {
 	let response = new TextDecoder().decode(binary);
 	console.log(login_url);
 	console.log(request.status);
+	load_stop();
 	if(request.status == 200) {
 		alert("Login successful.");
 	} else {
