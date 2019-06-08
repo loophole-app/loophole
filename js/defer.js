@@ -17,5 +17,9 @@ document.getElementById("submit").addEventListener("click", async function() {
 	let response = new TextDecoder().decode(binary);
 	console.log(login_url);
 	console.log(request.status);
-	console.log(response);
+	if(request.status == 200) {
+		alert("Login successful.");
+	} else {
+		alert(`Login failed: ${response}`);
+	}
 });
