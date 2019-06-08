@@ -4,8 +4,8 @@
 	"display": "standalone",
 	"icons": [
 		{
-			"src": "icon/loophole.png",
-			"sizes": "1024x1024",
+			"src": "icon/loophole-large.png",
+			"sizes": "600x600",
 			"type": "image/png"
 		}
 	],
