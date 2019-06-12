@@ -60,9 +60,14 @@ function autocomplete(input, arr) {
 			currentFocus--;
 			addActive(x);
 		} else if(e.keyCode == 13) {
-			e.preventDefault();
-			if(currentFocus > -1) {
-				if(x) x[currentFocus].click();
+			if(x.length == 1) {
+				x[0].click();
+				document.getElementById("username").focus();
+			} else {
+				e.preventDefault();
+				if(currentFocus > -1) {
+					if(x) x[currentFocus].click();
+				}
 			}
 		}
 	});
