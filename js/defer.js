@@ -13,7 +13,7 @@ document.getElementById("username").addEventListener("keydown", event => {
 		document.getElementById("password").focus();
 	}
 });
-window.addEventListener('beforeinstallprompt', (e) => {
+window.addEventListener('beforeinstallprompt', function(event) {
 	e.preventDefault();
 	deferredPrompt = e;
 	document.getElementById("a2hs").style.display = "inline-block";
