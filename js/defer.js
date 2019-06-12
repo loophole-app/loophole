@@ -29,6 +29,7 @@ document.getElementById("a2hs").addEventListener('click', (e) => {
 			console.log('User dismissed the A2HS prompt');
 		}
 		deferredPrompt = null;
+	});
 });
 let sender = async function() {
 	load_start();
