@@ -17,6 +17,7 @@ window.addEventListener('beforeinstallprompt', function(event) {
 	e.preventDefault();
 	deferredPrompt = e;
 	document.getElementById("a2hs").style.display = "inline-block";
+	console.log("a2hs is available!");
 });
 document.getElementById("a2hs").addEventListener('click', (e) => {
 	deferredPrompt.prompt();
