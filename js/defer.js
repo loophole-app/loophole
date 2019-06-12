@@ -19,7 +19,6 @@ window.addEventListener('beforeinstallprompt', function(event) {
 	document.getElementById("a2hs").style.display = "inline-block";
 });
 document.getElementById("a2hs").addEventListener('click', (e) => {
-	alert('a2hs');
 	deferredPrompt.prompt();
 	document.getElementById("a2hs").style.display = "none";
 	deferredPrompt.userChoice.then((choiceResult) => {
