@@ -1,5 +1,5 @@
 {
-	"background_color": "blue",
+	"background_color": "white",
 	"description": "A feature-rich alternative to the official SchoolLoop app",
 	"display": "standalone",
 	"icons": [
