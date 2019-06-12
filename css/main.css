@@ -57,7 +57,7 @@ input {
 }
 .autocomplete-items {
 	position: absolute;
-	border-box: 1px solid #d4d4d4;
+	border: 1px solid #d4d4d4;
 	border-bottom: none;
 	border-top: none;
 	z-index: 99;

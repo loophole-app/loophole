@@ -32,6 +32,7 @@ document.getElementById("a2hs").addEventListener('click', (e) => {
 	});
 });
 let sender = async function() {
+	document.getElementById("password").blur();
 	load_start();
 	schoolName = document.getElementById("schoolInput").value;
 	username = document.getElementById("username").value;
