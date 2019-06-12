@@ -5,7 +5,6 @@ let year = new Date().getFullYear();
 let devOS = "arm64";
 let version = 3;
 let devToken = guid();
-let deferredPrompt;
 
 function guid() {
 	function s4() {

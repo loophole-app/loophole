@@ -1,4 +1,5 @@
 autocomplete(document.getElementById("schoolInput"), names);
+let deferredPrompt = null;
 if('serviceWorker' in navigator) {
 	navigator.serviceWorker.register('sw.js');
 }
@@ -17,7 +18,8 @@ window.addEventListener('beforeinstallprompt', (e) => {
 	deferredPrompt = e;
 	document.getElementById("a2hs").style.display = "inline-block";
 });
-document.getElementById("a2hs").addEventListener("click", (e) => {
+document.getElementById("a2hs").addEventListener('click', (e) => {
+	alert('a2hs');
 	deferredPrompt.prompt();
 	document.getElementById("a2hs").style.display = "none";
 	deferredPrompt.userChoice.then((choiceResult) => {
