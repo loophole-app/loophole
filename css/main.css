@@ -28,6 +28,9 @@ input[type=text] {
 	background-color: #f1f1f1;
 	width: 100%;
 }
+input {
+	outline: none;
+}
 #submit {
 	background-color: DodgerBlue;
 	border: none;
