@@ -5,6 +5,8 @@ let year = new Date().getFullYear();
 let devOS = "arm64";
 let version = 3;
 let devToken = guid();
+let deferredPrompt;
+
 function guid() {
 	function s4() {
 		return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1).toUpperCase();

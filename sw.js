@@ -7,7 +7,8 @@ const URLS = [
 	'icon/loophole-large.png',
 	'js/defer.js',
 	'icon/apple-touch-icon.png',
-	'icon/loophole.png',
+	'icon/192.png',
+	'icon/512.png',
 	'img/loader.png'
 ];
 self.addEventListener('install', event => {

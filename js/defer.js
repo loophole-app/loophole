@@ -12,6 +12,22 @@ document.getElementById("username").addEventListener("keydown", event => {
 		document.getElementById("password").focus();
 	}
 });
+window.addEventListener('beforeinstallprompt', (e) => {
+	e.preventDefault();
+	deferredPrompt = e;
+	document.getElementById("a2hs").style.display = "inline-block";
+});
+document.getElementById("a2hs").addEventListener("click", (e) => {
+	deferredPrompt.prompt();
+	document.getElementById("a2hs").style.display = "none";
+	deferredPrompt.userChoice.then((choiceResult) => {
+		if(choiceResult.outcome == 'accepted') {
+			console.log('User accepted the A2HS prompt');
+		} else {
+			console.log('User dismissed the A2HS prompt');
+		}
+		deferredPrompt = null;
+});
 let sender = async function() {
 	load_start();
 	schoolName = document.getElementById("schoolInput").value;
