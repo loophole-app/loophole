@@ -46,6 +46,7 @@ function autocomplete(input, arr) {
 				b.addEventListener("click", function(e) {
 					input.value = this.getElementsByTagName("input")[0].value;
 					closeAllLists();
+					document.getElementById("username").focus();
 				});
 				a.appendChild(b);
 			}
