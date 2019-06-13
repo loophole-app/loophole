@@ -4,7 +4,7 @@ const URLS = [
 	'./',
 	'css/main.css',
 	'js/main.js',
-	'icon/loophole-large.webp',
+	'icon/loophole-large.png',
 	'js/defer.js',
 	'icon/apple-touch-icon.png',
 	'icon/192.png',
