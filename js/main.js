@@ -97,19 +97,6 @@ function autocomplete(input, arr) {
 		closeAllLists(e.target);
 	});
 }
-function nowebp() {
-	var webpMachine = new webpHero.WebpMachine()
-	webpMachine.polyfillDocument()
-}
-url = "data:image/webp;base64,UklGRkAAAABXRUJQVlA4WAoAAAAQAAAAAAAAAAAAQUxQSAIAAAAQAFZQOCAYAAAAMAEAnQEqAQABAA/A/iWkAANwAP7mtQAA"
-var img = new Image();
-img.onload = function() {
-	if(!(img.height > 0 && img.width > 0)) {
-		nowebp();
-	}
-};
-img.onerror = nowebp;
-img.src = url;
 function schoolURLFromName(schoolName) {
 	for(i = 0; i < schools.length; i++) {
 		if(schools[i].name.toUpperCase() == schoolName.toUpperCase()) {
