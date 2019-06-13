@@ -1,34 +1,3 @@
-body {
-	max-width: 500px;
-	text-align: center;
-}
-*, input {
-	font-family: 'Muli', sans-serif;
-	box-sizing: border-box;
-}
-.autocomplete {
-	position: relative;
-	display: inline-block;
-}
-body {
-	font-family: sans-serif;
-}
-img.logo {
-	width: 40%;
-}
-input, button {
-	border-radius: 10px;
-	border: 1px solid DodgerBlue;
-	background-color: #f1f1f1;
-	padding: 10px;
-	width: 100%;
-	font-size: 16px;
-	outline: none;
-}
-input[type=text] {
-	background-color: #f1f1f1;
-	width: 100%;
-}
 #submit {
 	background-color: DodgerBlue;
 	border: none;

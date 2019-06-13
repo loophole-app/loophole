@@ -4,11 +4,11 @@ const URLS = [
 	'./',
 	'css/main.css',
 	'js/main.js',
-	'icon/loophole-large.png',
+	'icon/loophole-large.webp',
 	'js/defer.js',
 	'icon/apple-touch-icon.png',
-	'icon/192.png',
-	'icon/512.png',
+	'icon/192.webp',
+	'icon/512.webp',
 	'img/loader.png'
 ];
 self.addEventListener('install', event => {
