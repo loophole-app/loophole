@@ -1,0 +1,27 @@
+{
+	"background-color": "white",
+	"description": "A feature-rich alternative to the official School Loop app",
+	"display": "standalone",
+	"icons": [
+		{
+			"src": "/static/512.webp",
+			"sizes": "512x512",
+			"type": "image/webp"
+		}, {
+			"src": "/static/512.png",
+			"sizes": "512x512",
+			"type": "image/png"
+		}, {
+			"src": "/static/192.webp",
+			"sizes": "192x192",
+			"type": "image/webp"
+		}, {
+			"src": "/static/192.png",
+			"sizes": "192x192",
+			"type": "image/png"
+		}
+	],
+	"name": "Loophole",
+	"short_name": "Loophole",
+	"start_url": "/"
+}

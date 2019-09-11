@@ -1,0 +1,17 @@
+{
+	"name": "loop-hole",
+	"version": 2,
+	"alias": "loop-hole",
+	"builds": [
+		{"src": "static/**/*", "use": "@now/static"},
+		{"src": "api/**/*.js", "use": "@now/node"}
+	],
+	"routes": [
+		{"src": "/static/(.*)", "dest": "/static/$1"},
+		{"src": "/api/(.*)", "dest": "/api/$1"},
+		{"src": "/", "dest": "/static/index.html"},
+		{"src": "/about", "dest": "/static/index.html"},
+		{"src": "/courses", "dest": "/static/index.html"},
+		{"src": "/.*", "status": 404, "dest": "/static/404.html"}
+	]
+}

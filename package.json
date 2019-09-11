@@ -1,0 +1,10 @@
+{
+	"name": "loophole",
+	"version": "1.0.0",
+	"dependencies": {
+		"node-fetch": "^2.6.0",
+		"now": "^16.2.0",
+		"string.prototype.endswith": "*",
+		"uuid": "*"
+	}
+}
