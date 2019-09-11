@@ -127,7 +127,7 @@ async function mupdate() {
 		await autocomplete(document.getElementById("schoolInput"), schools);
 	}
 	if(this.$route.path == "/courses") {
-		this.items = 3;
+		document.getElementById("hdr").addEventListener(click, logout);
 	}
 }
 async function autocomplete(input, arr) {
@@ -287,6 +287,10 @@ function load_stop() {
 window.app = app;
 window.load_start = load_start;
 window.load_stop = load_stop;
+function logout() {
+	localStorage.clear();
+	app.$router.replace("/");
+}
 /*if('serviceWorker' in navigator) {
 	navigator.serviceWorker.register('./static/sw.js');
 }*/
