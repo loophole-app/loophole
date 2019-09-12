@@ -5,13 +5,12 @@
 	<meta charset="UTF-8">
 	<script src="/static/vue.js"></script>
 	<script src="/static/vue-router.js"></script>
-	<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
-	<link href="https://fonts.googleapis.com/css?family=Muli&display=swap" rel="stylesheet">-->
 	<meta name="viewport" content="width=device-width">
 	<meta name="theme-color" content="#06a29e">
 	<meta name="viewport" content="initial-scale=1.0">
 	<meta name="description" content="Loophole is an alternative client to the official SchoolLoop app, but with more features">
 	<link rel="shortcut icon" type="image/png" href="/static/192.png" />
+	<link rel="stylesheet" href="/static/fa/css/all.css" />
 	<link rel="manifest" href="/static/manifest.webmanifest">
 	<style>
 		@font-face {
@@ -48,11 +47,16 @@
 			display: inline-block;
 			padding-left: 15px;
 		}
-		i.fa-power-off {
+		#logout {
+			cursor: pointer;
 			float: right;
 			padding-right: 15px;
 			margin-left: auto;
 			vertical-align: middle;
+			display: inline-block;
+			padding-left: 15px;
+			vertical-align: middle;
+			margin-top: 12px;
 		}
 		.fade-enter-active,
 		.fade-leave-active {
@@ -203,10 +207,6 @@ gr {
 }
 cname {
 	vertical-align: middle;
-}
-i.fa-power-off {
-	padding-right: 15px;
-	margin-left: auto;
 }
 .right {
 	margin-left: auto;

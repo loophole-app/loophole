@@ -52,12 +52,6 @@ Vue.component('grade-items', {
 </ul>
 `
 });
-
-function bgcolor(index) {
-	colors = ["#e7e247", "#7ea16b", "#4c3b4d", "#a53860", "#61c9a8", "#1e152a"];
-	color = colors[index % 6];
-	return color;
-}
 let sending = false;
 const router = new VueRouter({
 	mode: 'history',
@@ -125,9 +119,6 @@ async function mupdate() {
 	if(this.$route.path == "/") {
 		let schools = await fetch("/api/schools.js").then(r => r.json()).then(o => {return o;});
 		await autocomplete(document.getElementById("schoolInput"), schools);
-	}
-	if(this.$route.path == "/courses") {
-		this.items = 3;
 	}
 }
 async function autocomplete(input, arr) {
@@ -283,7 +274,12 @@ function load_stop() {
 	let loader = document.getElementById("loader");
 	loader.remove();
 }
+function logout() {
+	localStorage.clear();
+	app.$router.replace("/");
+}
 // complete rewrite of the old generation
+window.logout = logout;
 window.app = app;
 window.load_start = load_start;
 window.load_stop = load_stop;

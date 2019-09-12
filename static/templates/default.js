@@ -38,6 +38,7 @@ const Courses = {template:`
 	<div id="body">
 	<div class="header">
 		<h1 class="hd app-header">Courses</h1>
+		<i onclick='logout()' class="fas fa-power-off fa-3x" id="logout"></i>
 	</div>
 	<br>
 	<div id="grades">
