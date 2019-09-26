@@ -9,7 +9,7 @@ const MainTemplate = {template:`
 	</picture>
 	<br><br>
 	<div class="autocomplete">
-		<input id="schoolInput" type="text" placeholder="School">
+		<input id="schoolInput" type="text" placeholder="School" autocomplete="off">
 	</div>
 	<br><br>
 	<input id="username" type="text" autocorrect="off" autocapitalize="none" autocomplete="off" placeholder="Username">
