@@ -32,12 +32,19 @@
 		.content {
 			margin: 8px;
 		}
+		.bold {
+			font-weight: bold;
+		}
 		.header {
 			color: #ffffff;
 			background-image: linear-gradient(to bottom right, #079bb4, #03b857);
 			line-height: 28px;
 			align-items: center;
 			text-align: left;
+		}
+		.router-link {
+			color: #ffffff;
+			text-decoration: none;
 		}
 		.app-header {
 			display: flex;
@@ -223,6 +230,6 @@ elem {
 </head>
 <body>
 	<div id="app"><transition name="fade" mode="out-in" v-on:before-leave="beforeLeave" v-on:enter="enter" v-on:after-enter="afterEnter"><router-view></router-view></transition></div>
-	<script type="module" src="static/main.js"></script>
+	<script type="module" src="/static/main.js"></script>
 </body>
 </html>

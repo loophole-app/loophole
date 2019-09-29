@@ -46,4 +46,26 @@ const Courses = {template:`
 	</div>
 	</div>
 `};
-export { MainTemplate, About, Courses }
+const NotFound = {template:`
+	<div id="body">
+		<div class="header">
+			<h1 class="hd" id="hdr">404 Not Found</h1>
+		</div>
+		<div class="center">
+		<div class="about">
+		<h3>The page you were looking for was not found! You can try to go to our <router-link to="/">home page</router-link>.</h3>
+		</div>
+		</div>
+	</div>
+`}
+const ProgressReport = {template:`
+	<div id="body">
+	<div class="header">
+		<h1 class="hd" id="hdr"><router-link to="/courses"><i class="router-link fas fa-arrow-left"></i></router-link> Progress Report</h1>
+	</div>
+	<div class="center">
+	<h1>Not Implemented Yet</h1>
+	</div>
+	</div>
+`}
+export { MainTemplate, About, Courses, ProgressReport, NotFound }

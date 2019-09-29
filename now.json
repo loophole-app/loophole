@@ -12,6 +12,7 @@
 		{"src": "/", "dest": "/static/index.html"},
 		{"src": "/about", "dest": "/static/index.html"},
 		{"src": "/courses", "dest": "/static/index.html"},
+		{"src": "/progress/(.*)", "dest": "/static/index.html"},
 		{"src": "/.*", "status": 404, "dest": "/static/404.html"}
 	]
 }

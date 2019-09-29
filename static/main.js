@@ -1,6 +1,6 @@
 import Vue from './vue.js';
 import VueRouter from './vue-router.js';
-import {MainTemplate, About, Courses} from './templates/default.js';
+import {MainTemplate, About, Courses, NotFound, ProgressReport} from './templates/default.js';
 //Loophole by Sreehari Sreedev
 Vue.use(VueRouter);
 Vue.component('grade-items', {
@@ -41,7 +41,7 @@ Vue.component('grade-items', {
 	template: `
 <ul class="ul-grades">
 	<li class="grade-item" v-for="item in items" v-bind:style="item.styleObj">
-		<span class="g" v-bind:period="item.periodID">
+		<router-link class="router-link g" v-bind:to="'/progress/'+item.periodID">
 			<elem><pd>{{ item.period }}</pd></elem>
 			<elem><cname>{{ item.courseName }}</cname><br>
 				<cname>{{ item.teacherName }}</cname></elem>
@@ -75,6 +75,17 @@ const router = new VueRouter({
 		beforeEnter: loginGuard,
 		component: Courses,
 		title: "Courses"
+	},
+	{
+		path: '/progress/:periodid',
+		beforeEnter: loginGuard,
+		component: ProgressReport,
+		title: "Courses"
+	},
+	{
+		path: "*",
+		component: NotFound,
+		title: "404 Not Found"
 	}]
 });
 function loginGuard(to, from, next) {

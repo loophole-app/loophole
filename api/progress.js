@@ -16,18 +16,23 @@ module.exports = async (req, res) => {
 		res.status(400);
 		res.end('no student ID specified');
 	}
+	if(req.headers['loophole-periodid'] == null) {
+		res.status(400);
+		res.end('no period ID specified');
+	}
 	let username = req.headers['loophole-username'];
 	let password = req.headers['loophole-password'];
 	let studentid = req.headers['loophole-studentid'];
 	let domain = String(req.headers['loophole-domain']);
+	let period = req.headers['loophole-periodid'];
 	if(!domain.endsWith('.schoolloop.com')) {
 		res.status(400);
 		res.end('dangerous domain');
 		return 0;
 	}
-	let coursesURL = `https://${domain}/mapi/report_card?studentID=${studentid}`;
+	let progressURL = `https://${domain}/mapi/progress_report?studentID=${studentid}&periodID=${period}`;
 	let basic = btoa(`${username}:${password}`);
-	let response = await fetch(coursesURL, {
+	let response = await fetch(progressURL, {
 		headers: {
 			"Authorization": `Basic ${basic}`
 		}
