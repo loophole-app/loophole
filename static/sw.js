@@ -1,7 +1,15 @@
-const CACHE_NAME = 'cache-v1';
+const CACHE_NAME = 'cache-v2';
 const URLS = [
-	'index.html',
-	'./'
+	'/',
+	'/static/vue.js',
+	'/static/vue-router.js',
+	'/static/fa/css/all.css',
+	'/static/main.js',
+	'/static/templates/default.js',
+	'/static/512.webp',
+	'/static/512.png',
+	'/static/192.webp',
+	'/static/192.png'
 ];
 self.addEventListener('install', event => {
 	event.waitUntil(async function() {
@@ -32,7 +40,7 @@ self.addEventListener('activate', event => {
 		const cacheNames = await caches.keys();
 		await Promise.all(
 			cacheNames.filter((cacheName) => {
-				const deleteThisCache = cahceName !== CAHCE_NAME;
+				const deleteThisCache = cacheName !== CAHCE_NAME;
 				return deleteThisCache;
 			}).map(cacheName => caches.delete(cacheName))
 		);

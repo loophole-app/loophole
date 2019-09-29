@@ -294,6 +294,6 @@ window.logout = logout;
 window.app = app;
 window.load_start = load_start;
 window.load_stop = load_stop;
-/*if('serviceWorker' in navigator) {
+if('serviceWorker' in navigator) {
 	navigator.serviceWorker.register('./static/sw.js');
-}*/
+}
