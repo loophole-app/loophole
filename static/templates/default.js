@@ -61,7 +61,7 @@ const NotFound = {template:`
 const ProgressReport = {template:`
 	<div id="body">
 	<div class="header">
-		<h1 class="hd" id="hdr"><router-link to="/courses"><i class="router-link fas fa-arrow-left"></i></router-link> Progress Report</h1>
+		<h1 class="hd" id="hdr"><router-link class="router-link" to="/courses"><i class="fa-fw fas fa-arrow-left"></i></router-link> Progress Report</h1>
 	</div>
 	<div class="center">
 	<h1>Not Implemented Yet</h1>
