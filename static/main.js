@@ -14,8 +14,8 @@ Vue.component('grade-items', {
 	},
 	methods: {
 		bgcolor: function(index) {
-			let colors = ["#fe938c", "#e6b89c", "#05aa83", "#696d7d", "#4281a4", "#51a3a3"];
-			let color = colors[index % 6];
+			let colors = ["#fe938c", "#e6b89c", "#05aa83", "#a39171", "#4281a4", "#51a3a3", "#e77ab7"];
+			let color = colors[index % colors.length];
 			return color;
 		},
 		fetchData: async function() {
