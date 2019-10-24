@@ -37,8 +37,8 @@ const About = {template:`
 const Courses = {template:`
 	<div id="body">
 	<div class="header">
-		<h1 class="hd app-header">Courses</h1>
-		<i onclick='logout()' class="fas fa-power-off fa-3x" id="logout"></i>
+		<h1 class="hd app-header theme-color">Courses</h1>
+		<i onclick='logout()' class="fas fa-power-off fa-3x theme-color" id="logout"></i>
 	</div>
 	<br>
 	<div id="grades">
@@ -64,7 +64,7 @@ const ProgressReport = {template:`
 		<h1 class="hd" id="hdr"><router-link class="router-link" to="/courses"><i class="fa-fw fas fa-arrow-left"></i></router-link> Progress Report</h1>
 	</div>
 	<div class="center">
-	<h1>Not Implemented Yet</h1>
+	
 	</div>
 	</div>
 `}

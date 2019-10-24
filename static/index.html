@@ -25,6 +25,18 @@
 			font-family: 'Muli', sans-serif;
 			box-sizing: border-box;
 		}
+		@supports (-webkit-overflow-scrolling: touch) {
+			@font-face {
+				font-family: "Muli Title";
+				font-style: normal;
+				font-weight: 600;
+				src: local('Muli Regular'), local('Muli-Regular'), url(/static/fonts/muli.woff2);
+				unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+			}
+			.hd {
+				font-family: "Muli Title";
+			}
+		}
 		body {
 			text-align: center;
 			margin: 0 auto;
@@ -38,6 +50,12 @@
 		.header {
 			color: #ffffff;
 			background-image: linear-gradient(to bottom right, #079bb4, #03b857);
+			line-height: 28px;
+			align-items: center;
+			text-align: left;
+		}
+		.dark-header {
+			color: #ffffff;
 			line-height: 28px;
 			align-items: center;
 			text-align: left;

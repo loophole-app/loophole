@@ -12,11 +12,33 @@ Vue.component('grade-items', {
 	created: function () {
 		this.fetchData();
 	},
+	updated: function() {
+		this.themeColor();
+	},
 	methods: {
 		bgcolor: function(index) {
 			let colors = ["#fe938c", "#e6b89c", "#05aa83", "#a39171", "#4281a4", "#51a3a3", "#e77ab7"];
-			let color = colors[index % colors.length];
+			let dark_colors = ["#730801", "#633519", "#05aa83", "#515561", "#33647f", "#3b7777"];
+			let correct = localStorage.getItem("darkmode") == "yes" ? dark_colors  : colors;
+			let color = correct[index % correct.length];
 			return color;
+		},
+		themeColor: async function() {
+			if(localStorage.getItem("darkmode") == "yes") {
+				var css = `
+body {
+	background-color: #0d1114;
+}
+.hd {
+	background: none #157FCC;
+}
+`
+				head = document.head || document.getElementsByTagName('head')[0];
+				style = document.createElement('style')
+				head.appendChild(style)
+				style.type = 'text/css'
+				style.appendChild(document.createTextNode(css));
+			}
 		},
 		fetchData: async function() {
 			let response = await fetch("/api/courses.js", {
@@ -42,11 +64,11 @@ Vue.component('grade-items', {
 <ul class="ul-grades">
 	<li class="grade-item" v-for="item in items" v-bind:style="item.styleObj">
 		<router-link class="router-link g" v-bind:to="'/progress/'+item.periodID">
-			<elem><pd>{{ item.period }}</pd></elem>
-			<elem><cname>{{ item.courseName }}</cname><br>
-				<cname>{{ item.teacherName }}</cname></elem>
-			<elem class="right-part"><gr>{{ item.grade == "null" ? "" : item.grade }}</gr><br>
-			<cname>{{ item.score == "null" ? "" : item.score }}</cname></elem>
+			<elem><pd class="theme-color">{{ item.period }}</pd></elem>
+			<elem><cname class="theme-color">{{ item.courseName }}</cname><br>
+				<cname class="theme-color">{{ item.teacherName }}</cname></elem>
+			<elem class="right-part"><gr class="theme-color">{{ item.grade == "null" ? "" : item.grade }}</gr><br>
+			<cname class="theme-color">{{ item.score == "null" ? "" : item.score }}</cname></elem>
 		</span>
 	</li>
 </ul>
@@ -289,6 +311,7 @@ function logout() {
 	localStorage.clear();
 	app.$router.replace("/");
 }
+window.toggleDark = () => localStorage.setItem("darkmode", localStorage.getItem("darkmode") == "yes" ? "no" : "yes");
 // complete rewrite of the old generation
 window.logout = logout;
 window.app = app;
