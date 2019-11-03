@@ -7,31 +7,40 @@ module.exports = async (req, res) => {
 	let devOS = "iPhone9,4";
 	let devToken = uuidv4();
 	let version = 3;
-	if(!('loophole-username' in req.headers) || !('loophole-password' in req.headers)) {
-		res.status(400);
-		res.end('username or password not specified');
-		return 0;
-	}
-	if(req.headers['loophole-domain'] === null) {
-		res.status(400);
-		res.end('no domain specified');
-		return 0;
-	}
-	let username = req.headers['loophole-username'];
-	let password = req.headers['loophole-password'];
-	let domain = String(req.headers['loophole-domain']);
-	if(!domain.endsWith('.schoolloop.com')) {
-		res.status(400);
-		res.end('dangerous domain');
-		return 0;
-	}
-	let loginURL = `https://${domain}/mapi/login?version=${version}&devToken=${devToken}&devOS=${devOS}&year=${year}`;
-	let basic = btoa(`${username}:${password}`);
-	let response = await fetch(loginURL, {
-		headers: {
-			"Authorization": `Basic ${basic}`
+	let post = null;
+	let body = [];
+	req.on('data', (chunk) => {
+		body.push(chunk);
+	}).on('end', async () => {
+		body = Buffer.concat(body).toString();
+		try {
+			post = JSON.parse(body)
+		} catch (e) {
+			res.status(400);
+			res.end('invalid json');
+			return 0;
 		}
-	});
-	res.status(response.status);
-	res.end(await response.text());
+		if(!("username" in post && "password" in post && "domain" in post)) {
+			res.status(400);
+			res.end('required parameters not specified');
+			return 0;
+		}
+		let username = post.username;
+		let password = post.password;
+		let domain = String(post.domain);
+		if(!domain.endsWith('.schoolloop.com')) {
+			res.status(400);
+			res.end('dangerous domain');
+			return 0;
+		}
+		let loginURL = `https://${domain}/mapi/login?version=${version}&devToken=${devToken}&devOS=${devOS}&year=${year}`;
+		let basic = btoa(`${username}:${password}`);
+		let response = await fetch(loginURL, {
+			headers: {
+				"Authorization": `Basic ${basic}`
+			}
+		});
+		res.status(response.status);
+		res.end(await response.text());
+	})
 }

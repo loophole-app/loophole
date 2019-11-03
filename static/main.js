@@ -1,6 +1,6 @@
 import Vue from './vue.js';
 import VueRouter from './vue-router.js';
-import {MainTemplate, About, Courses, NotFound, ProgressReport} from './templates/default.js';
+import {MainTemplate, About, Courses, NotFound, ProgressReport, Assignments} from './templates/default.js';
 //Loophole by Sreehari Sreedev
 Vue.use(VueRouter);
 Vue.component('grade-items', {
@@ -42,12 +42,16 @@ body {
 		},
 		fetchData: async function() {
 			let response = await fetch("/api/courses.js", {
+				method: 'POST',
 				headers: {
-					"loophole-username": localStorage.getItem("username"),
-					"loophole-password": localStorage.getItem("password"),
-					"loophole-domain": localStorage.getItem("schooldomain"),
-					"loophole-studentid": localStorage.getItem("userid")
-				}
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({
+					'username': localStorage.getItem("username"),
+					'password': localStorage.getItem("password"),
+					'domain': localStorage.getItem("schooldomain"),
+					'studentID': localStorage.getItem("userid")
+				})
 			});
 			if(response.status != 200) {
 				alert("Error: " + await response.text());
@@ -74,6 +78,102 @@ body {
 </ul>
 `
 });
+Vue.component('assignments', {
+	data: function() {
+		return {
+			items: null
+		};
+	},
+	created: function () {
+		this.fetchData();
+	},
+	methods: {
+		bgcolor: function(index) {
+			let colors = ["#fe938c", "#e6b89c", "#05aa83", "#a39171", "#4281a4", "#51a3a3", "#e77ab7"];
+			let dark_colors = ["#730801", "#633519", "#05aa83", "#515561", "#33647f", "#3b7777"];
+			let correct = localStorage.getItem("darkmode") == "yes" ? dark_colors  : colors;
+			let color = correct[index % correct.length];
+			let r = {}
+			r["background-color"] = color;
+			return r;
+		},
+		fetchData: async function() {
+			let response = await fetch('/api/assignments.js', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({
+					'username': localStorage.getItem("username"),
+					'password': localStorage.getItem("password"),
+					'domain': localStorage.getItem("schooldomain"),
+					'studentID': localStorage.getItem("userid")
+				})
+			});
+			if(response.status != 200) {
+				alert("Error: " + await response.text());
+			} else {
+				let dueDate = null;
+				let now = new Date();
+				let tomorrow = new Date(now);
+				tomorrow.setDate(tomorrow.getDate() + 1);
+				let nextweek = new Date(now);
+				nextweek.setDate(nextweek.getDate() + 7);
+
+				let item = null;
+				let items = await response.json();
+				let obj = {weekday: "long", month: "short", day: "numeric"}
+				let final = [];
+				let current = [];
+				let prevDue = 6;
+				for(let i=0; i < items.length; i++) {
+					dueDate = new Date(Number(items[i].dueDate));
+					if(now.getDate() === dueDate.getDate() && Math.abs(now.getTime() - dueDate.getTime())<24*60*60*1000) {
+						// if today
+						items[i].dueString = "Today"
+					} else if(tomorrow.getDate() === dueDate.getDate() && Math.abs(tomorrow.getTime() - dueDate.getTime())<24*60*60*1000) {
+						// due tomorrow
+						items[i].dueString = "Tomorrow"
+					} else if(dueDate.getDate() < nextweek.getDate() && Math.abs(nextweek.getTime() - dueDate.getTime())<7*24*60*60*1000) {
+						// due next week
+						items[i].dueString = dueDate.toLocaleString('en-us', {weekday: "long"});
+					} else {
+						//due in the future or past
+						if(dueDate.getFullYear() != now.getFullYear()) {
+							obj.year = "numeric"
+						}
+						items[i].dueString = dueDate.toLocaleString('en-us', obj);
+					}
+					items[i].styleObj = this.bgcolor(i);
+					items[i].date = dueDate;
+					if(items[i].dueString == prevDue) {
+						current.push(items[i])
+					} else {
+						if(current.length != 0) {
+							final.push(current)
+						}
+						current = [items[i]]
+					}
+					prevDue = items[i].dueString;
+				}
+				final.push(current);
+				window.final = final;
+				window.items = items;
+				this.items = final;
+			}
+		}
+	},
+	template:`
+<ul class="ul-grades" style="text-align: left;">
+	<li class="grade-item" v-for="item in items" v-bind:style="item[0].styleObj">
+	<b>{{ item[0].dueString }}</b>
+	<ul>
+	<li v-for="assignment in item">{{ assignment.title }}</li>
+	</ul>
+	</li>
+</ul>
+`
+})
 let sending = false;
 const router = new VueRouter({
 	mode: 'history',
@@ -103,6 +203,12 @@ const router = new VueRouter({
 		beforeEnter: loginGuard,
 		component: ProgressReport,
 		title: "Courses"
+	},
+	{
+		path: '/assignments',
+		beforeEnter: loginGuard,
+		component: Assignments,
+		title: "Assignments"
 	},
 	{
 		path: "*",
@@ -264,11 +370,15 @@ async function sender(username, password, domain) {
 		return;
 	}
 	let response = await fetch("/api/login.js", {
+		method: 'POST',
 		headers: {
-			"loophole-username": username,
-			"loophole-password": password,
-			"loophole-domain": domain
-		}
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify({
+			'username': username,
+			'password': password,
+			'domain': domain
+		})
 	});
 	load_stop();
 	sending = false;

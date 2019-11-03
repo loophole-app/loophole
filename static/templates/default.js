@@ -9,12 +9,12 @@ const MainTemplate = {template:`
 	</picture>
 	<br><br>
 	<div class="autocomplete">
-		<input id="schoolInput" type="text" placeholder="School" autocomplete="off">
+		<input id="schoolInput" type="text" placeholder="school" autocomplete="off">
 	</div>
 	<br><br>
-	<input id="username" type="text" autocorrect="off" autocapitalize="none" autocomplete="off" placeholder="Username">
+	<input id="username" type="text" autocorrect="off" autocapitalize="none" autocomplete="off" placeholder="username">
 	<br><br>
-	<input id="password" type="password" placeholder="Password">
+	<input id="password" type="password" placeholder="password">
 	<br><br>
 	<button id="submit">Log In</button>
 	<br><br id="lastbr">
@@ -24,11 +24,11 @@ const MainTemplate = {template:`
 `}
 const About = {template:`
 	<div id="body"><div class="header">
-		<h1 class="hd" id="hdr">About</h1>
+		<h1 class="hd" id="hdr">about</h1>
 	</div>
 	<div class="center">
 	<div class="about">
-	<p>Loophole is an alternative School Loop client. It was written because the default client is a bit limited feature-wise. We chose to write Loophole as a PWA (Progressive Web-App) so that it would be compatible with as many devices as possible.</p>
+	<p>loophole is an alternative School Loop client. It was written because the default client is a bit limited feature-wise. We chose to write Loophole as a PWA (Progressive Web-App) so that it would be compatible with as many devices as possible.</p>
 	<router-link to="/">Back</router-link>
 	</div>
 	</div>
@@ -37,7 +37,7 @@ const About = {template:`
 const Courses = {template:`
 	<div id="body">
 	<div class="header">
-		<h1 class="hd app-header theme-color">Courses</h1>
+		<h1 class="hd app-header theme-color">Courses <i class="fas fa-caret-down"></i></h1>
 		<i onclick='logout()' class="fas fa-power-off fa-3x theme-color" id="logout"></i>
 	</div>
 	<br>
@@ -68,4 +68,16 @@ const ProgressReport = {template:`
 	</div>
 	</div>
 `}
-export { MainTemplate, About, Courses, ProgressReport, NotFound }
+const Assignments = {template:`
+	<div id="body">
+		<div class="header">
+			<h1 class="hd app-header theme-color">Assignments <i class="fas fa-caret-down"></i></h1>
+			<i onclick='logout()' class="fas fa-power-off fa-3x theme-color" id="logout"></i>
+		</div>
+		<div id="assignments">
+		<br>
+		<assignments></assignments>
+		</div>
+	</div>
+`}
+export { MainTemplate, About, Courses, ProgressReport, NotFound, Assignments }

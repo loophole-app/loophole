@@ -15,7 +15,7 @@ module.exports = async (req, res) => {
 			res.end('invalid json');
 			return 0;
 		}
-		if(!("username" in post && "password" in post && "domain" in post && "studentID" in post && "periodID" in post)) {
+		if(!("username" in post && "password" in post && "domain" in post && "studentID" in post)) {
 			res.status(400);
 			res.end('required parameters not specified');
 			return 0;
@@ -24,15 +24,14 @@ module.exports = async (req, res) => {
 		let password = post.password;
 		let domain = String(post.domain);
 		let studentID = post.studentID;
-		let periodID = post.periodID;
 		if(!domain.endsWith('.schoolloop.com')) {
 			res.status(400);
 			res.end('dangerous domain');
 			return 0;
 		}
-		let progressURL = `https://${domain}/mapi/progress_report?studentID=${studentID}&periodID=${periodID}`;
+		let assignmentsURL = `https://${domain}/mapi/assignments?studentID=${studentID}`;
 		let basic = btoa(`${username}:${password}`);
-		let response = await fetch(progressURL, {
+		let response = await fetch(assignmentsURL, {
 			headers: {
 				"Authorization": `Basic ${basic}`
 			}
