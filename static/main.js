@@ -168,7 +168,7 @@ Vue.component('assignments', {
 	<li class="grade-item" v-for="item in items" v-bind:style="item[0].styleObj">
 	<b>{{ item[0].dueString }}</b>
 	<ul>
-	<li v-for="assignment in item">{{ assignment.title }}</li>
+	<li v-for="assignment in item" style="list-style-type: square;">{{ assignment.title }}</li>
 	</ul>
 	</li>
 </ul>
