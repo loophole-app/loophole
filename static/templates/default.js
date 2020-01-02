@@ -29,6 +29,7 @@ const About = {template:`
 	<div class="center">
 	<div class="about">
 	<p>loophole is an alternative School Loop client. It was written because the default client is a bit limited feature-wise. We chose to write Loophole as a PWA (Progressive Web-App) so that it would be compatible with as many devices as possible.</p>
+	<p>written by Sreehari Sreedev</p>
 	<router-link to="/">Back</router-link>
 	</div>
 	</div>
