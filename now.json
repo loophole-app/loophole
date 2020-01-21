@@ -13,6 +13,8 @@
 		{"src": "/about", "dest": "/static/index.html"},
 		{"src": "/courses", "dest": "/static/index.html"},
 		{"src": "/assignments", "dest": "/static/index.html"},
+		{"src": "/hax", "dest": "/static/hax/index.html"},
+		{"src": "/hax/quill.user.js", "headers": {"Content-Type": "text/javascript"}, "dest": "/static/hax/quill.user.js"},
 		{"src": "/progress/(.*)", "dest": "/static/index.html"},
 		{"src": "/.*", "status": 404, "dest": "/static/404.html"}
 	]
