@@ -66,4 +66,4 @@ function checkNext() {
 		setTimeout(checkNext, 250);
 	}
 }
-setTimeout(checkVariable, 250);
+window.addEventListener('load', checkVariable);
