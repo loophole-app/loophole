@@ -23,5 +23,7 @@
 	],
 	"name": "Loophole",
 	"short_name": "Loophole",
-	"start_url": "/"
+	"start_url": "/",
+	"theme_color": "#06a29e",
+	"background_color": "#06a29e"
 }

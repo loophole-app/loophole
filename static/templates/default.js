@@ -16,7 +16,8 @@ const MainTemplate = {template:`
 	<br><br>
 	<input id="password" type="password" placeholder="password">
 	<br><br>
-	<button id="submit">Log In</button>
+	<button id="submit">Log In</button><br>
+	<button id="install" style="display: none;">Install</button>
 	<br><br id="lastbr">
 	<router-link to="/about">About Us</router-link>
 	<br>

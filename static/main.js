@@ -421,6 +421,24 @@ function logout() {
 	localStorage.clear();
 	app.$router.replace("/");
 }
+let deferredPrompt;
+let installButton = document.getElementById("install");
+window.addEventListener('beforeinstallprompt', (e) => {
+	deferredPrompt = e;
+	installButton.style.display = "inline-block";
+});
+installButton.addEventListener('click', (e) => {
+	installButton.style.display = 'none';
+	deferredPrompt.prompt();
+	deferredPrompt.userChoice.then((choiceResult) => {
+		if(choiceResult.outcome === 'accepted') {
+			console.log('User accepted A2HS');
+		} else {
+			console.log('User dismissed A2HS');
+		}
+		deferredPrompt = null;
+	});
+});
 window.toggleDark = () => localStorage.setItem("darkmode", localStorage.getItem("darkmode") == "yes" ? "no" : "yes");
 // complete rewrite of the old generation
 window.logout = logout;
@@ -428,5 +446,5 @@ window.app = app;
 window.load_start = load_start;
 window.load_stop = load_stop;
 if('serviceWorker' in navigator) {
-	navigator.serviceWorker.register('./static/sw.js');
+	navigator.serviceWorker.register('./sw.js');
 }
