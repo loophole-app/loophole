@@ -1,3 +1,4 @@
 window.support = 69420;
-alert("logic error");
+core.text = "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+alert("ur stinky lol");
 throw new Error("Something went badly wrong!");
